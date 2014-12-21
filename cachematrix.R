@@ -3,7 +3,7 @@
 ## Create functions to return the inverse of a matrix, and cache the result to
 ## avoid unnecessary computations when possible
 
-## makeCacheMatrix - 
+## makeCacheMatrix - create the matrix object which can cache the result from 'solve'
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
@@ -21,15 +21,16 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve - 
+## cacheSolve - calculate the inverse, grabbing cached result if it exists
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     m <- x$getMatrix()
     if (!is.null(m)) {
-        message("Getting cached matrix")
+        message("Getting cached matrix") ## Let us know we're pulling cached result
         return(m)
     }
+    ## If we get here, we have to do the math
     data <- x$get()
     m <- solve(data, ...)
     x$setMatrix(m)
