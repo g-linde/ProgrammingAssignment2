@@ -7,13 +7,13 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
-    set <- function(y) {
+    set <- function(y) { ## Populate the matrix object with the data passed in
         x <<- y
         m <<- NULL
     }
-    get <- function() x
-    setMatrix <- function(solve) m <<- solve
-    getMatrix <- function() m
+    get <- function() x ## Return the current matrix object
+    setMatrix <- function(solve) m <<- solve ## Invert the matrix object
+    getMatrix <- function() m ## Returns the solved matrix
     list(set = set,
          get = get,
          setMatrix = setMatrix,
